@@ -1,0 +1,36 @@
+{
+    "name": "wdalmut/UpClooModule",
+    "description": "Zend Framework 2 Module that provides UpCloo functionality",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "upcloo",
+        "related",
+        "links",
+        "correlate",
+        "correalation",
+        "semantic"
+    ],
+    "homepage": "http://www.upcloo.com/",
+    "authors": [
+        {
+            "name": "Walter Dal Mut",
+            "email": "walter.dalmut@gmail.com",
+            "homepage": "http://walterdalmut.com/"
+        }
+    ],
+    "require": {
+        "corley/upcloo-php-sdk": "0.14.*"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/upcloo/upcloo-php-sdk.git"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "UpClooModule": "src/"
+        }
+    }
+}
