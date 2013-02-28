@@ -80,7 +80,10 @@ you have to use the dedicated view helper
 </div>
 
 <!-- This is the UpCloo JavaScript SDK -->
-<?php echo $this->upclooForSpiders($this->pageURL); ?>
+<?php
+    $relatedPosts = $this->upclooForSpiders($this->pageURL);
+    //Style $relatedPosts as you want (array of contents).
+?>
 
 </div class="a-class">
     <p>The page continue...</p>
