@@ -10,7 +10,7 @@ Simple add to your composer
 
 ```
 "require": {
-    "wdalmut/UpClooModule": "dev-master"
+    "wdalmut/upcloo-module": "dev-master"
 }
 ```
 
