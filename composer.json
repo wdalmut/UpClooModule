@@ -1,5 +1,5 @@
 {
-    "name": "wdalmut/UpClooModule",
+    "name": "wdalmut/upcloo-module",
     "description": "Zend Framework 2 Module that provides UpCloo functionality",
     "type": "library",
     "license": "MIT",
