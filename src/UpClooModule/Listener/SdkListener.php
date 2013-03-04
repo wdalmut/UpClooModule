@@ -42,7 +42,13 @@ class SdkListener implements ListenerAggregateInterface
     public function onExecuted(MvcEvent $event)
     {
         $application = $event->getApplication();
-        $routeMatch = $event->getRouteMatch()->getMatchedRouteName();
+        $routeMatch = $event->getRouteMatch();
+
+        if ($routeMatch !== null) {
+            $routeMatch = $routeMatch->getMatchedRouteName();
+        } else {
+            return;
+        }
 
         $request = $application->getRequest();
 
@@ -66,7 +72,9 @@ class SdkListener implements ListenerAggregateInterface
 
     public function injectSdk(MvcEvent $event)
     {
-        $sdk = $this->renderer->upclooSdk("walter");
+        $sdk = $this->renderer->upclooSdk(
+            $this->renderer->serverUrl() . $event->getApplication()->getRequest()->getRequestUri()
+        );
         $response = $event->getApplication()->getResponse();;
 
         $injected    = preg_replace('/<\/body>/i', $sdk . "\n</body>", $response->getBody(), 1);
