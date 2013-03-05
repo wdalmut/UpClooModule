@@ -22,6 +22,9 @@ class UpClooSdkTest extends \PHPUnit_Framework_TestCase
         $this->object->setView($view);
     }
 
+    /**
+     * Check that the normal flow is correct
+     */
     public function testSitekey()
     {
         $this->object->sitekey = "this-is-the-sitekey";
@@ -30,6 +33,9 @@ class UpClooSdkTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals("this-is-the-sitekey,this-is-the-url,", $partial);
     }
 
+    /**
+     * Check that the virtual sitekey is added in the view
+     */
     public function testVirtualSitekey()
     {
         $this->object->sitekey = "the-sitekey";
