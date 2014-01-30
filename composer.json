@@ -20,7 +20,7 @@
         }
     ],
     "require": {
-        "zendframework/zendframework": "2.1.*",
+        "zendframework/zendframework": "2.*",
         "corley/upcloo-php-sdk": "0.14.*"
     },
     "require-dev": {

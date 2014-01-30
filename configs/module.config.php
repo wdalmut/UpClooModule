@@ -1,48 +1,11 @@
 <?php
 return array(
-    'di' => array(
-        'definition' => array(
-            'class' => array(
-                'UpCloo_Manager' => array(
-                    'setClient' => array(
-                        'shared' => array(
-                            'type' => 'UpCloo_Client_ClientInterface',
-                            'required' => true
-                        )
-                    )
-                )
-            )
-        ),
-        'instance' => array(
-            'UpCloo_Manager' => array(
-                'injections' => array(
-                    'setClient' => array('shared' => 'UpCloo_Client_UpCloo'
-                    )
-                )
-            )
-        )
-    ),
     'service_manager' => array(
         'factories' => array(
-            'upcloo' => function(\Zend\ServiceManager\ServiceLocatorInterface $sl) {
-                $config = $sl->get("Config");
-                $sitekey = $config["upcloo"]["sitekey"];
-
-                $upcloo = $sl->get("di")->get("UpCloo_Manager");
-                $upcloo->setSitekey($sitekey);
-
-                return $upcloo;
-            },
-            'UpClooModule\SdkListener' => function ($sm) {
-                $config = $sm->get("Config");
-                return new \UpClooModule\Listener\SdkListener($sm->get('ViewRenderer'), $config["upcloo"]);
-            },
+            'upcloo' => "UpClooModule\\Service\\UpClooFactory",
+            "upcloo.manager" => "UpClooModule\\Service\\UpClooManagerFactory",
+            'UpClooModule\SdkListener' => "UpClooModule\\Service\\SdkListenerFactory",
         )
-    ),
-    'upcloo' => array(
-        'sitekey' => '',
-        'auto_apply' => true,
-        'route' => array()
     ),
     'view_manager' => array(
         'template_map' => array(

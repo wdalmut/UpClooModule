@@ -10,11 +10,11 @@ use Zend\Mvc\MvcEvent;
 class Module
 {
     /**
-     * @param MvcEvent $e
+     * @param MvcEvent $event
      */
-    public function onBootstrap($e)
+    public function onBootstrap($event)
     {
-        $application    = $e->getApplication();
+        $application    = $event->getApplication();
         $eventManager   = $application->getEventManager();
         $serviceManager = $application->getServiceManager();
         $renderer       = $serviceManager->get('viewRenderer');
