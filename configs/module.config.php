@@ -1,5 +1,10 @@
 <?php
 return array(
+    'upcloo' => array(
+        'sitekey' => '',
+        'auto_apply' => true,
+        'route' => array()
+    ),
     'service_manager' => array(
         'factories' => array(
             'upcloo' => "UpClooModule\\Service\\UpClooFactory",
