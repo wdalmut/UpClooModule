@@ -1,5 +1,7 @@
 # UpCloo Module for Zend Framework 2
 
+[![Build Status](https://travis-ci.org/wdalmut/UpClooModule.png)](https://travis-ci.org/wdalmut/UpClooModule)
+
 UpClooModule integrates UpCloo with Zend Framework 2 quickly and easily
 
 *This module is in alpha state do not use in production*
