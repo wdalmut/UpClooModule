@@ -45,8 +45,7 @@ class SdkListener implements ListenerAggregateInterface
             return;
         }
 
-        $routeMatch = $event->getRouteMatch();
-        $routeMatch = $routeMatch->getMatchedRouteName();
+        $routeMatch = $event->getRouteMatch()->getMatchedRouteName();
 
         // Limit on particular routes if is in auto apply
         if (in_array($routeMatch, $this->options["route"])) {
