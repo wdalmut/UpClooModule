@@ -41,33 +41,38 @@ class SdkListener implements ListenerAggregateInterface
 
     public function onExecuted(MvcEvent $event)
     {
-        $application = $event->getApplication();
+        if ($this->isSdkNotInjectable($event)) {
+            return;
+        }
+
         $routeMatch = $event->getRouteMatch();
-
-        if ($routeMatch !== null) {
-            $routeMatch = $routeMatch->getMatchedRouteName();
-        } else {
-            return;
-        }
-
-        $request = $application->getRequest();
-
-        if ($request->isXmlHttpRequest()) {
-            return;
-        }
-
-        $response = $application->getResponse();
-        $headers = $response->getHeaders();
-        if ($headers->has('Content-Type')
-            && false !== strpos($headers->get('Content-Type')->getFieldValue(), 'html')
-        ) {
-            return;
-        }
+        $routeMatch = $routeMatch->getMatchedRouteName();
 
         // Limit on particular routes if is in auto apply
         if (in_array($routeMatch, $this->options["route"])) {
             $this->injectSdk($event);
         }
+    }
+
+    protected function IsSdkNotInjectable($event)
+    {
+        $routeMatch = $event->getRouteMatch();
+        $request = $event->getApplication()->getRequest();
+        $headers = $event->getApplication()->getResponse()->getHeaders();
+
+        if (!$routeMatch) {
+            return true;
+        }
+
+        if ($request->isXmlHttpRequest()) {
+            return true;
+        }
+
+        if ($headers->has('Content-Type') && strpos($headers->get('Content-Type')->getFieldValue(), 'html') !== false) {
+            return true;
+        }
+
+        return false;
     }
 
     public function injectSdk(MvcEvent $event)

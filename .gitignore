@@ -1,5 +1,4 @@
-*.swp
-*.swo
-*.swn
+*.sw*
 *.phar
 vendor
+tags
